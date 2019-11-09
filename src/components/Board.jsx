@@ -17,9 +17,9 @@ const Board = styled.div`
 `;
 
 // this is repetition currently, but I may want to alter row and column height in the future
-const colArr = Array(HEIGHT).fill(0);
-const rowArr = Array(WIDTH).fill(0);
-const boardArr = colArr.map(columns => rowArr.map(rows => 0));
+const colArr = Array(HEIGHT).fill(false);
+const rowArr = Array(WIDTH).fill(false);
+const boardArr = colArr.map(columns => rowArr.map(rows => false));
 
 const App = () => {
   const [boardState, setBoardState] = useState(boardArr);

@@ -14,21 +14,18 @@ const CellDiv = styled.div`
 
 const Cell = ({ boardState, setBoardState, x, y }) => {
 
-  const [active, setActive] = useState(false)
-
   const logState = event => {
     setBoardState(
       boardState.map((el, xIndex) => {
         return boardState[xIndex].map((el, yIndex) => {
-          setActive(!active);
-          return isEqual([xIndex, yIndex], [x, y]) ? 1 : el;
+          return isEqual([xIndex, yIndex], [x, y]) ? !el : el;
         });
       })
     );
-    console.log(boardState)
+    console.log(boardState[x][y])
   };
 
-  return <CellDiv onClick={logState} active={active}/>;
+  return <CellDiv onClick={logState} active={boardState[x][y]}/>;
 };
 
 export default Cell;
