@@ -27,8 +27,8 @@ const App = () => {
     <BoardContainer>
       <Board>
         {boardState.map((rows, xIndex) =>
-          boardState[xIndex].map((columns, yIndex) => (
-            <Cell boardState={boardState} x={xIndex} y={yIndex}/>
+          boardState[xIndex].map((cell, yIndex) => (
+            <Cell boardState={boardState} setBoardState={setBoardState} x={xIndex} y={yIndex}/>
           ))
         )}
       </Board>
