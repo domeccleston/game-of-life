@@ -23,6 +23,11 @@ const boardArr = colArr.map(columns => rowArr.map(rows => false));
 
 const App = () => {
   const [boardState, setBoardState] = useState(boardArr);
+  const seedBoard = (event) => {
+      const randomBoard = colArr.map(cols => rowArr.map(rows => Math.random() > 0.8))
+      setBoardState(randomBoard);
+  }
+
   return (
     <BoardContainer>
       <Board>
@@ -32,6 +37,7 @@ const App = () => {
           ))
         )}
       </Board>
+      <button onClick={seedBoard}>Seed</button>
     </BoardContainer>
   );
 };
