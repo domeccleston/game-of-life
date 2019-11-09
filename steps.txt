@@ -1,3 +1,6 @@
 01: print a single cell [X]
 02: print a row of cells [X]
-03: print several rows of cells
+03: print several rows of cells [X]
+04: set board to state, and map over state rather than board global [X]
+05: each cell can log its coordinates on click [x]
+06: 

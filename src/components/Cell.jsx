@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import styled from "styled-components";
 
 const CellDiv = styled.div`
@@ -7,9 +7,14 @@ const CellDiv = styled.div`
     height: 1em;
 `;
 
-const Cell = () => {
+const Cell = ({ boardState, x, y }) => {
+
+    const logState = event => {
+        console.log([x, y]);
+    }
+
     return (
-        <CellDiv />
+        <CellDiv onClick={logState}/>
     );
 }
  
