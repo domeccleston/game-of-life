@@ -12,16 +12,19 @@ const BoardContainer = styled.div`
 
 const Board = styled.div`
   display: flex;
-  width: 50%;
+  flex-wrap: wrap;
+  width: 12em;
 `;
 
-const rowArr = Array(10).fill(0);
+// this is repetition currently, but I may want to alter row and column height in the future
+const colArr = Array(HEIGHT).fill(0);
+const rowArr = Array(WIDTH).fill(0);
 
 const App = () => {
   return (
     <BoardContainer>
       <Board>
-        {rowArr.map(el => <Cell/>)}
+        {colArr.map(columns => rowArr.map(rows => <Cell />))}
       </Board>
     </BoardContainer>
   );

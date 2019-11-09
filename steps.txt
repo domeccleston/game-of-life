@@ -1,2 +1,3 @@
 01: print a single cell [X]
 02: print a row of cells [X]
+03: print several rows of cells
