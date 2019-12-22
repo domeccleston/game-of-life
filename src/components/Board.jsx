@@ -19,11 +19,11 @@ const Board = styled.div`
 // this is repetition currently, but I may want to alter row and column height in the future
 const colArr = Array(HEIGHT).fill(false);
 const rowArr = Array(WIDTH).fill(false);
-const boardArr = colArr.map(columns => rowArr.map(rows => false));
+const boardArr = colArr.map(() => rowArr.map(() => false));
 
 const App = () => {
   const [boardState, setBoardState] = useState(boardArr);
-  const seedBoard = (event) => {
+  const seedBoard = () => {
       const randomBoard = colArr.map(cols => rowArr.map(rows => Math.random() > 0.8))
       setBoardState(randomBoard);
   }
