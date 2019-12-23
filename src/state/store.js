@@ -1,8 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-import { boardReducer } from './reducers';
+import { boardReducer, tickReducer } from './reducers';
 
 const rootReducer = combineReducers({ 
     boardReducer,
+    tickReducer,
  });
 
 const store = createStore(rootReducer);

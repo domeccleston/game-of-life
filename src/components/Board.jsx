@@ -6,6 +6,12 @@ import { randomizeBoard } from '../state/actions';
 import { boardReducer } from '../state/reducers';
 
 const Board = ({ board, randomizeBoard }) => {
+
+  const handleClick = () => {
+    randomizeBoard();
+    console.log(board)
+  };
+
   return (
     <GridContainer>
       <Grid>
@@ -13,7 +19,7 @@ const Board = ({ board, randomizeBoard }) => {
           board[xIndex].map((cell, yIndex) => <Cell x={xIndex} y={yIndex} />)
         )}
       </Grid>
-      <button onClick={randomizeBoard}>Seed</button>
+      <button onClick={handleClick}>Seed</button>
     </GridContainer>
   );
 };

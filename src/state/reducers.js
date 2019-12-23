@@ -1,16 +1,27 @@
 import * as types from './actions.js';
 import { isEqual } from 'lodash';
 
-const baseHeight = 10;
-const baseWidth = 10;
+const BASE_HEIGHT = 10;
+const BASE_WIDTH = 10;
+const STARTING_POPULATION = 0.8;
 
 const populateBoard = cellState => {
-  return Array(baseHeight)
-    .fill(cellState)
+  return Array(BASE_HEIGHT)
+    .fill(null)
     .map(() =>
-      Array(baseWidth)
+      Array(BASE_WIDTH)
         .fill(null)
         .map(() => cellState)
+    );
+};
+
+const setRandomBoard = () => {
+  return Array(BASE_HEIGHT)
+    .fill(null)
+    .map(() =>
+      Array(BASE_WIDTH)
+        .fill(null)
+        .map(() => Math.random() > STARTING_POPULATION)
     );
 };
 
@@ -21,7 +32,7 @@ export const boardReducer = (state = initialBoardState, action) => {
     default:
       return state;
     case types.RANDOMIZE_BOARD:
-      return populateBoard(Math.random > 0.8);
+      return setRandomBoard();
     case types.SET_BOARD:
       return action.payload.board.map((el, xIndex) => {
         return action.payload.board[xIndex].map((el, yIndex) => {
@@ -32,3 +43,13 @@ export const boardReducer = (state = initialBoardState, action) => {
       });
   }
 };
+
+export const tickReducer = (state = 0, action) => {
+  console.log('tickReducer')
+  switch (action.type) {
+    default:
+      return state;
+    case types.INCREMENT_COUNT:
+      return state + 1;
+  } 
+}
