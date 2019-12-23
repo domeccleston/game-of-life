@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux';
 import styled from "styled-components";
 import { isEqual } from "lodash"; // faster than using JSON.stringify to deep compare arrays
 
@@ -65,4 +66,4 @@ const Cell = ({ boardState, setBoardState, x, y }) => {
   return <CellDiv onClick={logState} active={boardState[x][y]} />;
 };
 
-export default Cell;
+export default connect(state => state)(Cell);

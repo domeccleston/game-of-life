@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
 import Board from './components/Board';
+import { connect } from 'react-redux';
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <div className="App">
       <h1>Game of Life</h1>
@@ -11,4 +13,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(state => state)(App);

@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import { connect } from 'react-redux';
 import styled from "styled-components";
 import Cell from "./Cell";
-
+import { logTitle, LOG_TITLE } from '../state/actions';
 const HEIGHT = 10;
 const WIDTH = 10;
 
-const BoardContainer = styled.div`
+const GridContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const Board = styled.div`
+const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 12em;
@@ -21,25 +22,27 @@ const colArr = Array(HEIGHT).fill(false);
 const rowArr = Array(WIDTH).fill(false);
 const boardArr = colArr.map(() => rowArr.map(() => false));
 
-const App = () => {
+const Board = (props) => {
   const [boardState, setBoardState] = useState(boardArr);
+
   const seedBoard = () => {
       const randomBoard = colArr.map(cols => rowArr.map(rows => Math.random() > 0.8))
-      setBoardState(randomBoard);
+      //setBoardState(randomBoard);
+      props.logTitle({ title: "Hello new state!" })
   }
 
   return (
-    <BoardContainer>
-      <Board>
+    <GridContainer>
+      <Grid>
         {boardState.map((rows, xIndex) =>
           boardState[xIndex].map((cell, yIndex) => (
             <Cell boardState={boardState} setBoardState={setBoardState} x={xIndex} y={yIndex}/>
           ))
         )}
-      </Board>
+      </Grid>
       <button onClick={seedBoard}>Seed</button>
-    </BoardContainer>
+    </GridContainer>
   );
 };
 
-export default App;
+export default connect(state => state, { logTitle })(Board);
