@@ -1,39 +1,27 @@
-import React from "react";
+import React from 'react';
 import { connect } from 'react-redux';
-import styled from "styled-components";
-import Cell from "./Cell";
-import { RANDOMIZE_BOARD, randomizeBoard } from '../state/actions';
-const HEIGHT = 10;
-const WIDTH = 10;
+import { Grid, GridContainer } from './boardStyles';
+import Cell from './Cell';
+import { randomizeBoard } from '../state/actions';
+import { boardReducer } from '../state/reducers'; 
 
-const GridContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const Grid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 12em;
-`;
-
-
-const Board = (props) => {
-
-  console.log(props.boardReducer);
-
+const Board = ({ board, randomizeBoard }) => {
   return (
     <GridContainer>
       <Grid>
-        {props.boardReducer.map((rows, xIndex) =>
-          props.boardReducer[xIndex].map((cell, yIndex) => (
-            <Cell />
+        {board.map((rows, xIndex) =>
+          board[xIndex].map((cell, yIndex) => (
+            <Cell x={xIndex} y={yIndex} />
           ))
         )}
       </Grid>
-      <button onClick={props.randomizeBoard}>Seed</button>
+      <button onClick={randomizeBoard}>Seed</button>
     </GridContainer>
   );
 };
 
-export default connect(state => state, { randomizeBoard })(Board);
+const mapStateToProps = state => ({
+  board: state.boardReducer,
+})
+
+export default connect(mapStateToProps, { randomizeBoard })(Board);

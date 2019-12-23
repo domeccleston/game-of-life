@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
-import styled from "styled-components";
 import { isEqual } from "lodash"; // faster than using JSON.stringify to deep compare arrays
+import styled from 'styled-components'
 
 // % operator in javascript can return a negative number; we need an implementation that always returns positive in order to wrap
 // around array indices at the ends of the board
@@ -25,7 +25,12 @@ const CellDiv = styled.div`
   `}
 `;
 
-const Cell = ({ boardState, setBoardState, x, y }) => {
+const Cell = (props, { boardState, setBoardState, x, y }) => {
+
+  const handleClick = () => {
+    console.log(props)
+  }
+
   const isAlive = (arr, x, y) => {
 	const north = arr[mod(x - 1, width_max)][y]
 	const south = arr[mod(x + 1, width_max)][y]
@@ -63,7 +68,7 @@ const Cell = ({ boardState, setBoardState, x, y }) => {
     );
   };
 
-  return <CellDiv />;
+  return <CellDiv onClick={handleClick}/>;
 };
 
 export default connect(state => state)(Cell);
