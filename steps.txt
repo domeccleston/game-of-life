@@ -4,4 +4,5 @@
 04: set board to state, and map over state rather than board global [X]
 05: each cell can log its coordinates on click [x]
 06: each cell can log its state on click [x]
-07: cell changes state on click []
+07: set up redux store [x]
+08: set up actions and reducers for existing state, remove useState calls []

@@ -1,9 +1,6 @@
 export const LOG_TITLE = 'LOG_TITLE';
+export const RANDOMIZE_BOARD = 'RANDOMIZE_BOARD';
 
-export const logTitle = newTitle => {
-    return {
-        type: LOG_TITLE,
-        payload: newTitle,
-    }
+export const randomizeBoard = () => {
+    return { type: RANDOMIZE_BOARD };
 }
-

@@ -63,7 +63,7 @@ const Cell = ({ boardState, setBoardState, x, y }) => {
     );
   };
 
-  return <CellDiv onClick={logState} active={boardState[x][y]} />;
+  return <CellDiv />;
 };
 
 export default connect(state => state)(Cell);

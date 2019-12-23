@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from 'react-redux';
 import styled from "styled-components";
 import Cell from "./Cell";
-import { logTitle, LOG_TITLE } from '../state/actions';
+import { RANDOMIZE_BOARD, randomizeBoard } from '../state/actions';
 const HEIGHT = 10;
 const WIDTH = 10;
 
@@ -17,32 +17,23 @@ const Grid = styled.div`
   width: 12em;
 `;
 
-// this is repetition currently, but I may want to alter row and column height in the future
-const colArr = Array(HEIGHT).fill(false);
-const rowArr = Array(WIDTH).fill(false);
-const boardArr = colArr.map(() => rowArr.map(() => false));
 
 const Board = (props) => {
-  const [boardState, setBoardState] = useState(boardArr);
 
-  const seedBoard = () => {
-      const randomBoard = colArr.map(cols => rowArr.map(rows => Math.random() > 0.8))
-      //setBoardState(randomBoard);
-      props.logTitle({ title: "Hello new state!" })
-  }
+  console.log(props.boardReducer);
 
   return (
     <GridContainer>
       <Grid>
-        {boardState.map((rows, xIndex) =>
-          boardState[xIndex].map((cell, yIndex) => (
-            <Cell boardState={boardState} setBoardState={setBoardState} x={xIndex} y={yIndex}/>
+        {props.boardReducer.map((rows, xIndex) =>
+          props.boardReducer[xIndex].map((cell, yIndex) => (
+            <Cell />
           ))
         )}
       </Grid>
-      <button onClick={seedBoard}>Seed</button>
+      <button onClick={props.randomizeBoard}>Seed</button>
     </GridContainer>
   );
 };
 
-export default connect(state => state, { logTitle })(Board);
+export default connect(state => state, { randomizeBoard })(Board);
