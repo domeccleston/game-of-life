@@ -1,29 +1,11 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { isEqual } from "lodash"; // faster than using JSON.stringify to deep compare arrays
-import styled from 'styled-components'
-
-// % operator in javascript can return a negative number; we need an implementation that always returns positive in order to wrap
-// around array indices at the ends of the board
-
-function mod(n, m) {
-  return ((n % m) + m) % m;
-}
+import { BinaryCell } from './cellStyles';
+import { mod } from '../utils/utils';
 
 const width_max = 10;
 const height_max = 10;
-
-const CellDiv = styled.div`
-  border: 1px solid black;
-  width: 1em;
-  height: 1em;
-
-  ${({ active }) =>
-    active &&
-    `
-    background: black;
-  `}
-`;
 
 const Cell = (props, { boardState, setBoardState, x, y }) => {
 
@@ -68,7 +50,7 @@ const Cell = (props, { boardState, setBoardState, x, y }) => {
     );
   };
 
-  return <CellDiv onClick={handleClick}/>;
+  return <BinaryCell onClick={handleClick}/>;
 };
 
 export default connect(state => state)(Cell);
