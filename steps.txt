@@ -4,5 +4,9 @@
 04: set board to state, and map over state rather than board global [X]
 05: each cell can log its coordinates on click [x]
 06: each cell can log its state on click [x]
-07: set up redux store [x]
-08: set up actions and reducers for existing state, remove useState calls []
+07: seed board with random configuration of cells [x]
+08: each cell knows the state of its neighbours [X]
+09: set up redux store [x]
+10: set up actions and reducers for existing state, remove useState calls [x]
+11: set up a counter for game ticks [x]
+12: set up a simple version of game algorithm: cell should die if next to another living cell

@@ -1,21 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isEqual } from 'lodash'; // faster than using JSON.stringify to deep compare arrays
 import { BinaryCell } from './cellStyles';
-import { mod } from '../utils/utils';
-import { setBoard } from '../state/actions';
+import { setBoard, isAlive, checkNeighbours } from '../state/actions';
 
-const Cell = ({ board, setBoard, x, y }) => {
+const Cell = ({ board, x, y, setBoard, isAlive, checkNeighbours, cell }) => {
   const handleClick = () => {
-    setBoard(board, x, y);
-    console.log(board[x][y])
+    console.log(board);
   };  
 
-  return <BinaryCell onClick={() => setBoard(board, x, y)} active={board[x][y]}/>;
+  return <BinaryCell onClick={() => handleClick()} active={board[x][y]}/>;
 };
 
 const mapStateToProps = state => ({
-  board: state.boardReducer
+  board: state.boardReducer,
+  cell: state.cellReducer,
 });
 
-export default connect(mapStateToProps, { setBoard })(Cell);
+export default connect(mapStateToProps, { setBoard, isAlive, checkNeighbours })(Cell);
