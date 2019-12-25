@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, GridContainer } from './boardStyles';
 import Cell from './Cell';
-import { randomizeBoard } from '../state/actions';
+import { randomizeBoard, alternateBoard } from '../state/actions';
 import { boardReducer } from '../state/reducers';
 
-const Board = ({ board, randomizeBoard }) => {
+const Board = ({ board, randomizeBoard, alternateBoard }) => {
 
   const handleClick = () => {
-    randomizeBoard();
-    console.log(board)
+    alternateBoard();
+    console.log(board); 
   };
 
   return (
@@ -28,4 +28,4 @@ const mapStateToProps = state => ({
   board: state.boardReducer
 });
 
-export default connect(mapStateToProps, { randomizeBoard })(Board);
+export default connect(mapStateToProps, { randomizeBoard, alternateBoard })(Board);

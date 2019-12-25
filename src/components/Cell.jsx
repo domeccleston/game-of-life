@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BinaryCell } from './cellStyles';
-import { setBoard, isAlive, checkNeighbours } from '../state/actions';
+import { setBoard, isAlive } from '../state/actions';
 
-const Cell = ({ board, x, y, setBoard, isAlive, checkNeighbours, cell }) => {
+const Cell = ({ board, x, y, setBoard, isAlive, cell }) => {
   const handleClick = () => {
     console.log(board);
   };  
@@ -16,4 +16,4 @@ const mapStateToProps = state => ({
   cell: state.cellReducer,
 });
 
-export default connect(mapStateToProps, { setBoard, isAlive, checkNeighbours })(Cell);
+export default connect(mapStateToProps, { setBoard, isAlive })(Cell);

@@ -31,6 +31,8 @@ export const boardReducer = (state = initialBoardState, action) => {
   switch (action.type) {
     default:
       return state;
+    case types.ALTERNATE_BOARD:
+      return Array(BASE_HEIGHT).map(() => Array(BASE_WIDTH).map(() => true))
     case types.RANDOMIZE_BOARD:
       return setRandomBoard();
     case types.SET_BOARD:
@@ -39,12 +41,6 @@ export const boardReducer = (state = initialBoardState, action) => {
           return isEqual([xIndex, yIndex], [action.payload.x, action.payload.y])
             ? !el
             : el;
-        });
-      });
-    case types.CHECK_NEIGHBOURS:
-      return action.payload.board.map((el, xIndex) => {
-        return action.payload.board[xIndex].map((el, yIndex) => {
-          return calculateNeighbours(action.payload.board, action.payload.x, action.payload.y) === 2 ? true : false;
         });
       });
   }
