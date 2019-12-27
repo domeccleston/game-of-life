@@ -9,5 +9,6 @@ export const BinaryCell = styled.div`
     active &&
     `
     background: black;
+    color: white;
   `}
 `;

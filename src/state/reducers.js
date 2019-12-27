@@ -1,9 +1,9 @@
 import * as types from './actions.js';
 import { isEqual } from 'lodash'; // faster than using JSON.stringify to deep compare arrays
 import { calculateNeighbours } from './actions';
-export const BASE_HEIGHT = 10;
-export const BASE_WIDTH = 10;
-const STARTING_POPULATION = 0.8;
+export const BASE_HEIGHT = 20;
+export const BASE_WIDTH = 20;
+const STARTING_POPULATION = 0.6;
 
 const populateBoard = cellState => {
   return Array(BASE_HEIGHT)
@@ -25,14 +25,13 @@ const setRandomBoard = () => {
     );
 };
 
+let count = 0;
+
 const initialBoardState = populateBoard(false);
 
 export const boardReducer = (state = initialBoardState, action) => {
   switch (action.type) {
     default:
-      return state;
-    case types.ALTERNATE_BOARD:
-      return Array(BASE_HEIGHT).map(() => Array(BASE_WIDTH).map(() => true))
     case types.RANDOMIZE_BOARD:
       return setRandomBoard();
     case types.SET_BOARD:

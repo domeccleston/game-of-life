@@ -1,16 +1,16 @@
 import React from 'react';
-import './App.css';
+import AppContainer from './AppContainer';
 import Board from './components/Board';
 import Timer from './components/Timer';
 import { connect } from 'react-redux';
 
 function App(props) {
   return (
-    <div className="App">
+    <AppContainer>
       <h1>Game of Life</h1>
       <Board />
       <Timer />
-    </div>
+    </AppContainer>
   );
 }
 
