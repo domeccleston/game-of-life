@@ -46,37 +46,6 @@ export const isAlive = (board, x, y) => {
   };
 };
 
-/* 
-const BASE_WIDTH = 10;
-const BASE_HEIGHT = 10;
-
-const isAlive = (arr, x, y) => {
-	const north = arr[mod(x - 1, BASE_WIDTH)][y]
-	const south = arr[mod(x + 1, BASE_WIDTH)][y]
-	const east = arr[x][mod(y + 1, BASE_HEIGHT)]
-	const west = arr[x][mod(y - 1, BASE_HEIGHT)]
-	const ne = arr[mod(x - 1, BASE_WIDTH)][mod(y + 1, BASE_HEIGHT)]
-	const nw = arr[mod(x - 1, BASE_WIDTH)][mod(y - 1, BASE_HEIGHT)]
-	const se = arr[mod(x + 1, BASE_WIDTH)][mod(y + 1, BASE_HEIGHT)]
-	const sw = arr[mod(x + 1, BASE_WIDTH)][mod(y - 1, BASE_HEIGHT)]
-    const surroundings = [north, ne, east, se, south, sw, west, nw];
-    const count = surroundings.filter(el => el).length;
-
-    if (boardState[x][y] === false) {
-        if (count === 3) {
-            return true;
-        } else {
-            return false;
-        }
-    } else {
-        if (count === 2 || count === 3) {
-            return true;
-        } else {
-            return false;
-        }
-    } 
-  }; */
-
 export const incrementCount = () => {
   return { type: INCREMENT_COUNT };
 };
