@@ -1,45 +1,21 @@
-import mod from '../utils/utils';
-import { BASE_HEIGHT, BASE_WIDTH } from '../state/reducers'
+import { mod } from '../utils/utils';
+import { BASE_HEIGHT, BASE_WIDTH } from '../state/reducers';
 
-function create2dArray(height, width) {
-  return Array(height)
-    .fill()
-    .map((yEl, yI) => {
-      return Array(width)
-        .fill()
-        .map((xEl, xI) => yI * 10 + xI);
-    });
-}
-
-function createRandomBoard(height, width) {
-  return Array(height)
-    .fill()
-    .map((yEl, yI) => {
-      return Array(width)
-        .fill()
-        .map((xEl, xI) => Math.random() > 0.5);
-    });
-}
+// this is the core algorithm that determines the state of the game
 
 function isAlive(cell, neighboursCount) {
-  // if cell is alive
   if (cell === true) {
     if (neighboursCount < 2) {
-      // die by underpopulation
       return false;
     }
     if (neighboursCount === 2 || neighboursCount === 3) {
-      // live on to next generation
       return true;
     }
     if (neighboursCount > 2) {
-      // die by overpopulation
       return false;
     }
   } else {
-    // if cell is dead
     if (neighboursCount === 3) {
-      // become a live cell
       return true;
     }
   }
@@ -59,3 +35,9 @@ const calculateNeighbours = (arr, y, x) => {
   const count = surroundings.filter(el => el).length;
   return isAlive(arr[y][x], count);
 };
+
+export function runIteration(board) {
+  return board.map((yEl, yI) =>
+    board[yI].map((xEl, xI) => calculateNeighbours(board, yI, xI))
+  );
+}

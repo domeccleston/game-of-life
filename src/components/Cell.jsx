@@ -8,7 +8,7 @@ const Cell = ({ board, x, y, setBoard, isAlive, cell }) => {
     console.log(board);
   };  
 
-  return <BinaryCell onClick={() => handleClick()} active={board[x][y]}>{board[x][y] === true ? '1' : '0'}</BinaryCell>;
+  return <BinaryCell onClick={() => handleClick()} active={board[x][y]}></BinaryCell>;
 };
 
 const mapStateToProps = state => ({

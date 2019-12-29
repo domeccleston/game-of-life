@@ -5,13 +5,7 @@ import Cell from './Cell';
 import { randomizeBoard, alternateBoard } from '../state/actions';
 import { boardReducer } from '../state/reducers';
 
-const Board = ({ board, randomizeBoard, alternateBoard }) => {
-
-  const handleClick = () => {
-    alternateBoard();
-    console.log(board); 
-  };
-
+const Board = ({ board, randomizeBoard }) => {
   return (
     <GridContainer>
       <Grid>
@@ -19,7 +13,7 @@ const Board = ({ board, randomizeBoard, alternateBoard }) => {
           board[xIndex].map((cell, yIndex) => <Cell x={xIndex} y={yIndex} />)
         )}
       </Grid>
-      <button onClick={handleClick}>Seed</button>
+      <button onClick={randomizeBoard}>Seed</button>
     </GridContainer>
   );
 };
@@ -28,4 +22,6 @@ const mapStateToProps = state => ({
   board: state.boardReducer
 });
 
-export default connect(mapStateToProps, { randomizeBoard, alternateBoard })(Board);
+export default connect(mapStateToProps, { randomizeBoard, alternateBoard })(
+  Board
+);

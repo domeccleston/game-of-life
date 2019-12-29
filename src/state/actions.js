@@ -8,6 +8,7 @@ export const INCREMENT_COUNT = 'INCREMENT_COUNT';
 export const IS_ALIVE = 'IS_ALIVE';
 export const CHECK_NEIGHBOURS = 'CHECK_NEIGHBOURS';
 export const ALTERNATE_BOARD = 'ALTERNATE_BOARD';
+export const RUN_ITERATION = 'RUN_ITERATION';
 
 export const randomizeBoard = () => {
   return { type: RANDOMIZE_BOARD };
@@ -52,4 +53,8 @@ export const incrementCount = () => {
 
 export const alternateBoard = () => {
   return { type: ALTERNATE_BOARD };
+}
+
+export const runIteration = ( board ) => {
+  return { type: RUN_ITERATION, payload: board };
 }
