@@ -1,9 +1,9 @@
-import * as types from './actions.js';
-import { isEqual } from 'lodash'; // faster than using JSON.stringify to deep compare arrays
-import { runIteration } from '../game/index';
+import * as types from "./actions.js";
+import { isEqual } from "lodash"; // faster than using JSON.stringify to deep compare arrays
+import { runIteration } from "../game/index";
 export const BASE_HEIGHT = 20;
-export const BASE_WIDTH = 20;
-const STARTING_POPULATION = 0.6;
+export const BASE_WIDTH = 30;
+const STARTING_POPULATION = 0.75;
 
 const populateBoard = cellState => {
   return Array(BASE_HEIGHT)
@@ -34,7 +34,7 @@ export const boardReducer = (state = initialBoardState, action) => {
     default:
       return state;
     case types.RUN_ITERATION:
-      return runIteration(action.payload)
+      return runIteration(action.payload);
     case types.RANDOMIZE_BOARD:
       return setRandomBoard();
     case types.SET_BOARD:

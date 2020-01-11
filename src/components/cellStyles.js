@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const BinaryCell = styled.div`
-  border-left: 1px solid lightgrey;
-  border-top: 1px solid lightgrey;
-  width: 1em;
-  height: 1em;
+  border: 1px solid lightgrey;
+  padding: 0.55em;
+  max-width: 1em;
+  max-height: 1em;
 
   ${({ active }) =>
     active &&
