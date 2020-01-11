@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 function App(props) {
   return (
     <AppContainer>
-      <h1>Test of Test</h1>
+      <h1>Game of Life</h1>
       <Board />
       <Timer />
     </AppContainer>

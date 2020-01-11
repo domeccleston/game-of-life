@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const BinaryCell = styled.div`
-  border: 1px solid black;
+  border-left: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
   width: 1em;
   height: 1em;
 
