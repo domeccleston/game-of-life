@@ -1,9 +1,9 @@
 import * as types from "./actions.js";
 import { isEqual } from "lodash"; // faster than using JSON.stringify to deep compare arrays
 import { runIteration } from "../game/index";
-export const BASE_HEIGHT = 20;
-export const BASE_WIDTH = 30;
-const STARTING_POPULATION = 0.75;
+export const BASE_HEIGHT = 30;
+export const BASE_WIDTH = 50;
+const STARTING_POPULATION = 0.8;
 
 const populateBoard = cellState => {
   return Array(BASE_HEIGHT)

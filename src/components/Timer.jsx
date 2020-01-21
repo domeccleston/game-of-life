@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { incrementCount, randomizeBoard } from '../state/actions';
+import { incrementCount } from '../state/actions';
 import { connect } from 'react-redux';
 import { runIteration } from '../state/actions';
 
@@ -12,7 +12,6 @@ const Timer = ({ incrementCount, ticks, board, runIteration }) => {
     <div>
       <h3>Ticks: {ticks}</h3>
       <button onClick={handleClick}>Tick</button>
-      <button onClick={randomizeBoard}>Seed</button>
     </div>
   );
 };

@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const BinaryCell = styled.div`
   border: 1px solid lightgrey;
-  padding: 0.55em;
-  max-width: 1em;
-  max-height: 1em;
+  color: black;
+  width: 14px;
+  height: 14px;
 
   ${({ active }) =>
     active &&
     `
     background: black;
-    color: white;
+    color: black;
   `}
 `;

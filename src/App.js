@@ -3,14 +3,16 @@ import AppContainer from './AppContainer';
 import Board from './components/Board';
 import Timer from './components/Timer';
 import { connect } from 'react-redux';
+import Grids from './components/Grids';
 
 function App(props) {
   return (
-    <AppContainer>
+    <Grids />
+/*     <AppContainer>
       <h1>Game of Life</h1>
       <Board />
       <Timer />
-    </AppContainer>
+    </AppContainer> */
   );
 }
 
