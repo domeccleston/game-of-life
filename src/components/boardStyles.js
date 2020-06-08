@@ -4,13 +4,13 @@ export const GridContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
-  height: 70%;
-  border: 1px solid lightgray;
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid white;
 `;
 
 export const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 23em;
+  max-width: 50.5em;
 `;
