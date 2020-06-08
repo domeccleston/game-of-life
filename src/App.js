@@ -1,18 +1,18 @@
 import React from 'react';
-import AppContainer from './AppContainer';
-import Board from './components/Board';
-import Timer from './components/Timer';
 import { connect } from 'react-redux';
-import Grids from './components/Grids';
+// import AppContainer from './AppContainer';
+// import Board from './components/Board';
+// import Timer from './components/Timer';
+import Game from './tutorial/Game';
 
 function App(props) {
   return (
-    <Grids />
-/*     <AppContainer>
-      <h1>Game of Life</h1>
-      <Board />
-      <Timer />
-    </AppContainer> */
+    <Game />
+    // <AppContainer>
+    //   <h1>Game of Life</h1>
+    //   <Board />
+    //   <Timer />
+    // </AppContainer>
   );
 }
 

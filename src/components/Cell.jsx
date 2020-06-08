@@ -6,8 +6,8 @@ import { setBoard, isAlive } from "../state/actions";
 const Cell = ({ board, x, y, setBoard, isAlive, cell }) => {
   const handleClick = () => {
     setBoard(board, x, y);
-  };
-
+  };  
+  
   return (
     <BinaryCell onClick={() => handleClick()} active={board[x][y]}></BinaryCell>
   );
