@@ -23,6 +23,7 @@ function isAlive(cell, neighboursCount) {
 }
 
 const calculateNeighbours = (arr, y, x) => {
+  console.log(arr, x, y);
   const north = arr[mod(y - 1, BASE_WIDTH)][x];
   const south = arr[mod(y + 1, BASE_WIDTH)][x];
   const east = arr[y][mod(x + 1, BASE_HEIGHT)];

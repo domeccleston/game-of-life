@@ -10,3 +10,11 @@
 10: set up actions and reducers for existing state, remove useState calls [x]
 11: set up a counter for game ticks [x]
 12: set up a simple version of game algorithm: cell should die if next to another living cell
+....
+13: add onclick back in to remove or add cells
+14: expand board to be significantly larger
+15: add in a function to autotick the board 
+
+stretches:
+- add in rewind functionality
+-
