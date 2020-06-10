@@ -120,7 +120,7 @@ class Game extends React.Component {
           )}
         </div>
         <div className='controls'>
-            Update every 
+            Update every 10 seconds
         </div>
       </div>
     );
