@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from 'redux';
-import { boardReducer, tickReducer, cellReducer } from './reducers';
+import { boardReducer, runStateReducer, cellReducer } from './reducers';
 
 const rootReducer = combineReducers({ 
-    boardReducer,
-    tickReducer,
     cellReducer,
+    boardReducer,
+    runStateReducer,
  });
 
 const store = createStore(rootReducer);

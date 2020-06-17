@@ -1,8 +1,8 @@
 import * as types from './actions.js';
 import { isEqual } from 'lodash'; // faster than using JSON.stringify to deep compare arrays
 import { runIteration } from '../game/index';
-export const BASE_HEIGHT = 20;
-export const BASE_WIDTH = 20;
+export const BASE_HEIGHT = 30;
+export const BASE_WIDTH = 30;
 const STARTING_POPULATION = 0.6;
 
 const populateBoard = cellState => {
@@ -48,15 +48,6 @@ export const boardReducer = (state = initialBoardState, action) => {
   }
 };
 
-export const tickReducer = (state = 0, action) => {
-  switch (action.type) {
-    default:
-      return state;
-    case types.INCREMENT_COUNT:
-      return state + 1;
-  }
-};
-
 export const cellReducer = (state = false, action) => {
   switch (action.type) {
     default:
@@ -65,3 +56,22 @@ export const cellReducer = (state = false, action) => {
       return action.payload === 0;
   }
 };
+
+const initialGameState = {
+  running: false,
+  speed: 500,
+  generation: 0,
+}
+
+export const runStateReducer = (state = initialGameState, action) => {
+  switch (action.type) {
+    default:
+      return state;
+    case types.INCREMENT_COUNT:
+      return { ...state, generation: state.generation + 1}
+    case types.START_GAME:
+      return { ...state, running: true}
+    case types.STOP_GAME:
+      return { ...state, running: false}
+  }
+}

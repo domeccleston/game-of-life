@@ -14,3 +14,7 @@ export const Grid = styled.div`
   flex-wrap: wrap;
   max-width: 23em;
 `;
+
+export const BoardTable = styled.table`
+  border-collapse: collapse;
+`;

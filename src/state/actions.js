@@ -9,6 +9,8 @@ export const IS_ALIVE = 'IS_ALIVE';
 export const CHECK_NEIGHBOURS = 'CHECK_NEIGHBOURS';
 export const ALTERNATE_BOARD = 'ALTERNATE_BOARD';
 export const RUN_ITERATION = 'RUN_ITERATION';
+export const START_GAME = 'START_GAME';
+export const STOP_GAME = 'STOP_GAME';
 
 export const randomizeBoard = () => {
   return { type: RANDOMIZE_BOARD };
