@@ -1,48 +1,80 @@
-import React, { useEffect } from 'react';
-import { incrementCount, randomizeBoard } from '../state/actions';
-import { connect } from 'react-redux';
-import { runIteration } from '../state/actions';
+import React, { useEffect } from "react";
+import {
+  incrementCount,
+  randomizeBoard,
+  runIteration,
+  startGame,
+  stopGame,
+  setSpeed,
+} from "../state/actions";
+import { connect } from "react-redux";
+import { useInterval } from "../utils/utils";
 
-
-const Slider = ( { speed, onSpeedChange }) => {
-  const handleChange = e => onSpeedChange(e.target.value)
-
-  return (
-      <input
-          type='range'
-          min='50'
-          max='1000'
-          step='50'
-          value={speed}
-          onChange={handleChange}
-          />
-  );
-};
-
-const runStopButton = () => {
-  return (
-    <button></button>
-  )
-}
-
-const Timer = ({ incrementCount, ticks, board, runIteration, randomizeBoard }) => {
+const Timer = ({
+  ticks,
+  board,
+  game,
+  incrementCount,
+  runIteration,
+  randomizeBoard,
+  startGame,
+  stopGame,
+  speed,
+  setSpeed,
+}) => {
   const handleClick = () => {
     runIteration(board);
     incrementCount();
+  };
+
+  console.log(game);
+
+  const handleSpeedChange = (e) => {
+    setSpeed(e.target.value)
   }
+
+  const handleStartStop = () => {
+    game.running ? stopGame() : startGame();
+  };
+
+  useInterval(
+    () => {
+      incrementCount();
+      runIteration(board);
+    },
+    game.running ? game.speed : null
+  );
+
   return (
     <div>
-      <h3>Ticks: {ticks}</h3>
+      <h3>Ticks: {game.generation}</h3>
       <button onClick={handleClick}>Tick</button>
       <button onClick={randomizeBoard}>Seed</button>
-      <Slider />
+      <input
+        type="range"
+        min="50"
+        max="1000"
+        step="50"
+        value={speed}
+        onChange={handleSpeedChange}
+      />
+      <button onClick={handleStartStop}>
+        {game.running ? "Stop" : "Start"}
+      </button>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  ticks: state.tickReducer,
-  board: state.boardReducer
+const mapStateToProps = (state) => ({
+  board: state.boardReducer,
+  game: state.runStateReducer,
 });
 
-export default connect(mapStateToProps, { incrementCount, runIteration, randomizeBoard })(Timer);
+export default connect(mapStateToProps, {
+  incrementCount,
+  runIteration,
+  randomizeBoard,
+  startGame,
+  stopGame,
+  setSpeed,
+})(Timer);

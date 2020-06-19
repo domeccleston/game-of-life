@@ -3,7 +3,7 @@ import { isEqual } from 'lodash'; // faster than using JSON.stringify to deep co
 import { runIteration } from '../game/index';
 export const BASE_HEIGHT = 30;
 export const BASE_WIDTH = 30;
-const STARTING_POPULATION = 0.6;
+const STARTING_POPULATION = 0.8;
 
 const populateBoard = cellState => {
   return Array(BASE_HEIGHT)
@@ -24,8 +24,6 @@ const setRandomBoard = () => {
         .map(() => Math.random() > STARTING_POPULATION)
     );
 };
-
-let count = 0;
 
 const initialBoardState = populateBoard(false);
 
@@ -59,7 +57,7 @@ export const cellReducer = (state = false, action) => {
 
 const initialGameState = {
   running: false,
-  speed: 500,
+  speed: 100,
   generation: 0,
 }
 
@@ -73,5 +71,7 @@ export const runStateReducer = (state = initialGameState, action) => {
       return { ...state, running: true}
     case types.STOP_GAME:
       return { ...state, running: false}
+    case types.SET_SPEED:
+      return { ...state, speed: action.payload }
   }
 }

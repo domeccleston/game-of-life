@@ -11,6 +11,7 @@ export const ALTERNATE_BOARD = 'ALTERNATE_BOARD';
 export const RUN_ITERATION = 'RUN_ITERATION';
 export const START_GAME = 'START_GAME';
 export const STOP_GAME = 'STOP_GAME';
+export const SET_SPEED = 'SET_SPEED';
 
 export const randomizeBoard = () => {
   return { type: RANDOMIZE_BOARD };
@@ -59,4 +60,16 @@ export const alternateBoard = () => {
 
 export const runIteration = ( board ) => {
   return { type: RUN_ITERATION, payload: board };
+}
+
+export const startGame = () => {
+  return { type: START_GAME }
+}
+
+export const stopGame = () => {
+  return { type: STOP_GAME }
+}
+
+export const setSpeed = ( speed ) => {
+  return { type: SET_SPEED, payload: speed }
 }

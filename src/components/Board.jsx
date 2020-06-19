@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BoardTable, Grid, GridContainer } from "./boardStyles";
+import { BoardTable } from "./boardStyles";
 import Cell from "./Cell";
 import { randomizeBoard, alternateBoard } from "../state/actions";
-import { boardReducer } from "../state/reducers";
 
 const Board = ({ board, randomizeBoard }) => {
   console.log(board);
