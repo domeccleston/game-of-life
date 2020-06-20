@@ -65,6 +65,13 @@ button {
 .controls {
     display: flex;
     justify-content: space-evenly;
-    width: 50%;
+    width: 75%;
     padding: 2em;
+}
+
+.slider-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #eee;
 }

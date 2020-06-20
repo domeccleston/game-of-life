@@ -43,8 +43,8 @@ const Timer = ({
   };
 
   const handleSave = () => {
-    alert(board)
-  }
+    alert(board);
+  };
 
   useInterval(
     () => {
@@ -60,14 +60,18 @@ const Timer = ({
       <button onClick={randomizeBoard}>Seed</button>
       <button onClick={handleClear}>Clear</button>
       <button onClick={handleSave}>Save</button>
-      <input
-        type="range"
-        min="1"
-        max="1001"
-        step="50"
-        value={speed}
-        onChange={handleSpeedChange}
-      />  
+      <div className="slider-box">
+        <input
+          className="slider"
+          type="range"
+          min="1"
+          max="1001"
+          step="50"
+          value={speed}
+          onChange={handleSpeedChange}
+        />
+        <label>Speed</label>
+      </div>
       <button onClick={handleStartStop}>
         {game.running ? "Stop" : "Start"}
       </button>
