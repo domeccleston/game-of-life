@@ -4,32 +4,23 @@ import { BoardTable } from "./boardStyles";
 import Cell from "./Cell";
 import { randomizeBoard, alternateBoard } from "../state/actions";
 
-const Board = ({ board, randomizeBoard }) => {
-  console.log(board);
-  // return (
-  //   <GridContainer>
-  //     <Grid>
-  //       {board.map((rows, xIndex) => {
-  //         return board[xIndex].map((cell, yIndex) => (
-  //           <Cell x={xIndex} y={yIndex} />
-  //         ));
-  //       })}
-  //     </Grid>
-  //     <button onClick={randomizeBoard}>Seed</button>
-  //   </GridContainer>
-  // );
-  const tr = [];
+const Board = ({ board }) => {
+  const rows = [];
 
   for (let r = 0; r < board.length; r++) {
-    const td = [];
+    const columns = [];
 
     for (let c = 0; c < board[0].length; c++) {
-      td.push(<Cell key={`${r}, ${c}`} x={c} y={r} />);
+      columns.push(<Cell key={`${r}, ${c}`} x={c} y={r} />);
     }
-    tr.push(<tr key={r}>{td}</tr>)
+    rows.push(<tr key={r}>{columns}</tr>);
   }
 
-  return <BoardTable><tbody>{tr}</tbody></BoardTable>
+  return (
+    <BoardTable>
+      <tbody>{rows}</tbody>
+    </BoardTable>
+  );
 };
 
 const mapStateToProps = (state) => ({

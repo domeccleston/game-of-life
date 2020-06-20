@@ -102,7 +102,6 @@ class Game extends React.Component {
 
   render() {
     const { cells } = this.state;
-    console.log(cells)
     return (
       <div>
         <div

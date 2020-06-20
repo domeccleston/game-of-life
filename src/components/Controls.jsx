@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   incrementCount,
   randomizeBoard,
@@ -6,6 +6,7 @@ import {
   startGame,
   stopGame,
   setSpeed,
+  clearBoard,
 } from "../state/actions";
 import { connect } from "react-redux";
 import { useInterval } from "../utils/utils";
@@ -21,17 +22,22 @@ const Timer = ({
   stopGame,
   speed,
   setSpeed,
+  clearBoard,
 }) => {
   const handleClick = () => {
     runIteration(board);
     incrementCount();
   };
 
-  console.log(game);
+  const handleClear = () => {
+    clearBoard();
+  };
 
   const handleSpeedChange = (e) => {
-    setSpeed(e.target.value)
-  }
+    // for setInterval, a higher number means a slower timer, so we invert it
+    let baseSpeed = e.target.value;
+    setSpeed(1000 - baseSpeed);
+  };
 
   const handleStartStop = () => {
     game.running ? stopGame() : startGame();
@@ -47,13 +53,14 @@ const Timer = ({
 
   return (
     <div>
-      <h3>Ticks: {game.generation}</h3>
+      <h3>Generations: {game.generation}</h3>
       <button onClick={handleClick}>Tick</button>
       <button onClick={randomizeBoard}>Seed</button>
+      <button onClick={handleClear}>Clear</button>
       <input
         type="range"
-        min="50"
-        max="1000"
+        min="1"
+        max="1001"
         step="50"
         value={speed}
         onChange={handleSpeedChange}
@@ -77,4 +84,5 @@ export default connect(mapStateToProps, {
   startGame,
   stopGame,
   setSpeed,
+  clearBoard,
 })(Timer);

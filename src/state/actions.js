@@ -1,21 +1,17 @@
-import { BASE_HEIGHT, BASE_WIDTH } from './reducers';
-import { mod } from '../utils/utils';
+import { calculateNeighbours } from "../game/index";
 
-export const LOG_TITLE = 'LOG_TITLE';
-export const RANDOMIZE_BOARD = 'RANDOMIZE_BOARD';
-export const SET_BOARD = 'SET_BOARD';
-export const INCREMENT_COUNT = 'INCREMENT_COUNT';
-export const IS_ALIVE = 'IS_ALIVE';
-export const CHECK_NEIGHBOURS = 'CHECK_NEIGHBOURS';
-export const ALTERNATE_BOARD = 'ALTERNATE_BOARD';
-export const RUN_ITERATION = 'RUN_ITERATION';
-export const START_GAME = 'START_GAME';
-export const STOP_GAME = 'STOP_GAME';
-export const SET_SPEED = 'SET_SPEED';
-
-export const randomizeBoard = () => {
-  return { type: RANDOMIZE_BOARD };
-};
+export const LOG_TITLE = "LOG_TITLE";
+export const RANDOMIZE_BOARD = "RANDOMIZE_BOARD";
+export const SET_BOARD = "SET_BOARD";
+export const INCREMENT_COUNT = "INCREMENT_COUNT";
+export const IS_ALIVE = "IS_ALIVE";
+export const CHECK_NEIGHBOURS = "CHECK_NEIGHBOURS";
+export const ALTERNATE_BOARD = "ALTERNATE_BOARD";
+export const RUN_ITERATION = "RUN_ITERATION";
+export const START_GAME = "START_GAME";
+export const STOP_GAME = "STOP_GAME";
+export const SET_SPEED = "SET_SPEED";
+export const CLEAR_BOARD = "CLEAR_BOARD";
 
 export const setBoard = (board, x, y) => {
   return {
@@ -23,31 +19,21 @@ export const setBoard = (board, x, y) => {
     payload: {
       board,
       x,
-      y
-    }
+      y,
+    },
   };
-};
-
-export const calculateNeighbours = (board, x, y) => {
-  const north = board[mod(x - 1, BASE_WIDTH)][y];
-  const south = board[mod(x + 1, BASE_WIDTH)][y];
-  const east = board[x][mod(y + 1, BASE_HEIGHT)];
-  const west = board[x][mod(y - 1, BASE_HEIGHT)];
-  const ne = board[mod(x - 1, BASE_WIDTH)][mod(y + 1, BASE_HEIGHT)];
-  const nw = board[mod(x - 1, BASE_WIDTH)][mod(y - 1, BASE_HEIGHT)];
-  const se = board[mod(x + 1, BASE_WIDTH)][mod(y + 1, BASE_HEIGHT)];
-  const sw = board[mod(x + 1, BASE_WIDTH)][mod(y - 1, BASE_HEIGHT)];
-  const surroundings = [north, ne, east, se, south, sw, west, nw];
-  const count = surroundings.filter(el => el).length;
-  return count;
 };
 
 export const isAlive = (board, x, y) => {
   const neighbours = calculateNeighbours(board, x, y);
   return {
     type: IS_ALIVE,
-    payload: neighbours
+    payload: neighbours,
   };
+};
+
+export const randomizeBoard = () => {
+  return { type: RANDOMIZE_BOARD };
 };
 
 export const incrementCount = () => {
@@ -56,20 +42,24 @@ export const incrementCount = () => {
 
 export const alternateBoard = () => {
   return { type: ALTERNATE_BOARD };
-}
-
-export const runIteration = ( board ) => {
-  return { type: RUN_ITERATION, payload: board };
-}
+};
 
 export const startGame = () => {
-  return { type: START_GAME }
-}
+  return { type: START_GAME };
+};
 
 export const stopGame = () => {
-  return { type: STOP_GAME }
-}
+  return { type: STOP_GAME };
+};
 
-export const setSpeed = ( speed ) => {
-  return { type: SET_SPEED, payload: speed }
-}
+export const clearBoard = () => {
+  return { type: CLEAR_BOARD };
+};
+
+export const runIteration = (board) => {
+  return { type: RUN_ITERATION, payload: board };
+};
+
+export const setSpeed = (speed) => {
+  return { type: SET_SPEED, payload: speed };
+};

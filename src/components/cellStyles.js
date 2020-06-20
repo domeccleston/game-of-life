@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const BinaryCell = styled.td`
   border: 1px solid black;

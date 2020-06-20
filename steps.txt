@@ -9,4 +9,8 @@
 09: set up redux store [x]
 10: set up actions and reducers for existing state, remove useState calls [x]
 11: set up a counter for game ticks [x]
-12: set up a simple version of game algorithm: cell should die if next to another living cell
+12: set up a simple version of game algorithm: cell should die if next to another living cell [x]
+13: set up timer [x]
+14: set up start/stop [x]
+15: refactor board to a table [x]
+16: add clear button []
