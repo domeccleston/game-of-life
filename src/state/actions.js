@@ -1,4 +1,4 @@
-import { calculateNeighbours } from "../game/index";
+import { calculateNeighbours } from "../game/game";
 
 export const LOG_TITLE = "LOG_TITLE";
 export const RANDOMIZE_BOARD = "RANDOMIZE_BOARD";

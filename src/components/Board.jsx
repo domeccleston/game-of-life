@@ -1,15 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BoardTable } from "./boardStyles";
 import Cell from "./Cell";
 import { randomizeBoard, alternateBoard } from "../state/actions";
 
 const Board = ({ board }) => {
   const rows = [];
-
   for (let r = 0; r < board.length; r++) {
     const columns = [];
-
     for (let c = 0; c < board[0].length; c++) {
       columns.push(<Cell key={`${r}, ${c}`} x={c} y={r} />);
     }
@@ -17,9 +14,9 @@ const Board = ({ board }) => {
   }
 
   return (
-    <BoardTable>
+    <table>
       <tbody>{rows}</tbody>
-    </BoardTable>
+    </table>
   );
 };
 

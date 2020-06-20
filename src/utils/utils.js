@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 
-// Custom hook to set up a declarative timer. Taken from Dan Abramov's blog post on overreacted.io
+// Custom hook to set up a declarative timer. Thanks to Dan Abramov's useful blog post on using 
+// setInterval with React Hooks: https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 export function useInterval(callback, delay) {
   const savedCallback = useRef();
 

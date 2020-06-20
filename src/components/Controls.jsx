@@ -12,7 +12,6 @@ import { connect } from "react-redux";
 import { useInterval } from "../utils/utils";
 
 const Timer = ({
-  ticks,
   board,
   game,
   incrementCount,
@@ -36,12 +35,16 @@ const Timer = ({
   const handleSpeedChange = (e) => {
     // for setInterval, a higher number means a slower timer, so we invert it
     let baseSpeed = e.target.value;
-    setSpeed(1000 - baseSpeed);
+    setSpeed(1001 - baseSpeed);
   };
 
   const handleStartStop = () => {
     game.running ? stopGame() : startGame();
   };
+
+  const handleSave = () => {
+    alert(board)
+  }
 
   useInterval(
     () => {
@@ -52,11 +55,11 @@ const Timer = ({
   );
 
   return (
-    <div>
-      <h3>Generations: {game.generation}</h3>
+    <div className="controls">
       <button onClick={handleClick}>Tick</button>
       <button onClick={randomizeBoard}>Seed</button>
       <button onClick={handleClear}>Clear</button>
+      <button onClick={handleSave}>Save</button>
       <input
         type="range"
         min="1"
@@ -64,7 +67,7 @@ const Timer = ({
         step="50"
         value={speed}
         onChange={handleSpeedChange}
-      />
+      />  
       <button onClick={handleStartStop}>
         {game.running ? "Stop" : "Start"}
       </button>

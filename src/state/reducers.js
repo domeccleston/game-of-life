@@ -1,8 +1,11 @@
 import * as types from "./actions.js";
-import { runIteration, setBoard } from "../game/index";
-export const BASE_HEIGHT = 30;
-export const BASE_WIDTH = 30;
-const STARTING_POPULATION = 0.8;
+import { runIteration, setBoard } from "../game/game";
+import { glidergun } from "../game/glidergun";
+
+// constants defining board size: glider gun example code will only work with these values
+export const BASE_HEIGHT = 40;
+export const BASE_WIDTH = 40;
+const STARTING_POPULATION = 0.9;
 
 const populateBoard = (cellState) => {
   return Array(BASE_HEIGHT)
@@ -23,7 +26,7 @@ const setRandomBoard = () => {
     );
 };
 
-const initialBoardState = populateBoard(false);
+const initialBoardState = BASE_HEIGHT === 40 && BASE_WIDTH === 40 ? glidergun : populateBoard(false);
 
 export const boardReducer = (state = initialBoardState, action) => {
   switch (action.type) {
@@ -51,7 +54,7 @@ export const cellReducer = (state = false, action) => {
 
 const initialGameState = {
   running: false,
-  speed: 100,
+  speed: 500,
   generation: 0,
 };
 

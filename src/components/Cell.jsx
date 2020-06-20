@@ -1,15 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BinaryCell } from "./cellStyles";
 import { setBoard, isAlive } from "../state/actions";
 
-const Cell = ({ board, x, y, setBoard, isAlive, cell }) => {
+const Cell = ({ board, x, y, setBoard }) => {
   const handleClick = () => {
     setBoard(board, x, y);
   };
 
   return (
-    <BinaryCell onClick={() => handleClick()} active={board[x][y]}></BinaryCell>
+    <td
+      onClick={handleClick}
+      className={board[x][y] ? "alive" : "dead"}
+    ></td>
   );
 };
 
