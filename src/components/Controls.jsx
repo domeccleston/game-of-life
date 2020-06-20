@@ -42,10 +42,6 @@ const Timer = ({
     game.running ? stopGame() : startGame();
   };
 
-  const handleSave = () => {
-    alert(board);
-  };
-
   useInterval(
     () => {
       incrementCount();
@@ -59,7 +55,6 @@ const Timer = ({
       <button onClick={handleClick}>Tick</button>
       <button onClick={randomizeBoard}>Seed</button>
       <button onClick={handleClear}>Clear</button>
-      <button onClick={handleSave}>Save</button>
       <div className="slider-box">
         <input
           className="slider"
